@@ -1,10 +1,10 @@
 <template>
   <div>   
-    <Exo1/>
+    <!--<Exo1/>
     <Exo2/>
     <Exo3/>
     <Exo4/>
-    <DemoVFor/>
+    <DemoVFor/> -->
     <Conditionels/>
   </div>
 </template>
