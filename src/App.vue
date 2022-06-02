@@ -8,11 +8,16 @@
     <br />
     <hr>
     <h2>Exo 3</h2>
-    <input type="text" v-model="token"/>
+    <input type="text" v-model="jwtInput"/>
     <br/> 
-    {{ token }}
     <button @click="decodeClaimns">TEST - Token</button>
     {{ claims }}
+
+    <br/><hr>
+
+    <h2>Exo 4</h2>
+    <button @click="saveJwt">Sauvegarder TOKEN</button>
+    {{ savedJwt }}
   </div>
 </template>
 <script setup>
@@ -20,8 +25,10 @@
   import * as jose from 'jose'
 
   const counter = ref(0);
-  const token = ref('');
+
+  const jwtInput = ref('');
   const claims = ref(null);
+  const savedJwt = ref('');
 
   const submit = () => {
     counter.value ++;
@@ -31,11 +38,22 @@
   }
 
   const decodeClaimns = () => {
-    const jwtdecode = jose.decodeJwt(token.value)
-    claims.value = jwtdecode;
-    console.log(claims)
+    try {
+      const jwtdecode = jose.decodeJwt(jwtInput.value)
+      claims.value = jwtdecode;
+    } catch (error) {
+      claims.value = error.message
+    }
+  }
+  const saveJwt = () =>{
+    localStorage.setItem('jwt', jwtInput.value);
+    localSavedJwt();
+  }
+  const localSavedJwt = () => {
+    savedJwt.value = localStorage.getItem('jwt');
   }
 
+  jwtInput.value = savedJwt.value;
 </script>
 
 <style>
