@@ -8,6 +8,7 @@
 </script>
 
 <template>
+<h2>Exo 1</h2>
     {{counter}}
     <hr/>
 </template>

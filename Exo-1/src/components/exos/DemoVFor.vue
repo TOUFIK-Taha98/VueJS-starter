@@ -22,7 +22,7 @@
 </script>
 
 <template>
-    <h2>Exo5 : V-FOR v-IF v-ELSE</h2>
+    <h2>Exo : V-FOR v-IF v-ELSE</h2>
     <ul>
         <li v-for="obj in listeObjets" :key="obj.id" @click="()=> deleteUser(obj)">
         {{obj.nom}} - {{ obj.prenom }}</li>
